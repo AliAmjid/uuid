@@ -195,10 +195,14 @@ class Uuid implements UuidInterface
      * @return string
      * @link http://www.php.net/manual/en/language.oop5.magic.php#object.tostring
      */
-    public function __toString()
-    {
-        return $this->getBytes();
-    }
+	public function __toString()
+	{
+		if(debug_backtrace()[1]['object'] == 'Doctrine\DBAL\Driver\PDOConnection') {
+			return $this->getBytes();
+		} else {
+			return $this->toString();
+		}
+	}
 
     /**
      * Converts this UUID object to a string when the object is serialized
