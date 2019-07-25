@@ -197,11 +197,10 @@ class Uuid implements UuidInterface
      */
 	public function __toString()
 	{
-		if(debug_backtrace()[1]['object'] == 'Doctrine\DBAL\Driver\PDOConnection') {
-			return $this->getBytes();
-		} else {
+		if(debug_backtrace()[1]['function'] =='getDoctrineEntityProperty') {
 			return $this->toString();
 		}
+		return $this->getBytes();
 	}
 
     /**
