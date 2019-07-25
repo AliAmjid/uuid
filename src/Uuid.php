@@ -197,7 +197,7 @@ class Uuid implements UuidInterface
      */
     public function __toString()
     {
-        return $this->toString();
+        return $this->getBytes();
     }
 
     /**
